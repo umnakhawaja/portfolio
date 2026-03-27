@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Umna Khawaja | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0f0e0c;
+    --cream: #f7f4ef;
+    --warm: #e8e2d9;
+    --accent: #c8562a;
+    --accent2: #4d3a5e;
+    --muted: #7a7570;
+    --rule: #d4cdc5;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── navigation ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 3rem;
+    background: rgba(247,244,239,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--muted);
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── hero ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 8rem 3rem 4rem;
+    gap: 4rem;
+    position: relative;
+    overflow: hidden;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -20%; right: -10%;
+    width: 55%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 40%, rgba(200,86,42,0.07), transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-text { animation: fadeUp 0.9s ease both; }
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+  }
+
+  .hero-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3.2rem, 6vw, 5.5rem);
+    line-height: 1.05;
+    margin-bottom: 1.4rem;
+    color: var(--ink);
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-tagline {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--muted);
+    max-width: 38ch;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.6rem;
+    border-radius: 2px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.22s;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: white;
+    border: 2px solid var(--accent);
+  }
+  .btn-primary:hover { background: #a84420; border-color: #a84420; }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--ink);
+    border: 2px solid var(--ink);
+  }
+  .btn-secondary:hover { background: var(--ink); color: var(--cream); }
+
+  /* hero right side */
+  .hero-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    animation: fadeUp 0.9s 0.15s ease both;
+  }
+
+  .stat-card {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 1.4rem 1.8rem;
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+    transition: transform 0.22s, box-shadow 0.22s;
+  }
+  .stat-card:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
+
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.4rem;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  .lang-pill-row {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+  }
+
+  .lang-pill {
+    background: var(--warm);
+    border: 1px solid var(--rule);
+    border-radius: 100px;
+    padding: 0.3rem 0.9rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── section bases ── */
+  section {
+    padding: 5rem 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    color: var(--ink);
+    line-height: 1.1;
+  }
+
+  hr.section-rule {
+    flex: 1;
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin-bottom: 0.25rem;
+  }
+
+  /* ── education ── */
+  .edu-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-left: 2px solid var(--rule);
+    padding-left: 2rem;
+    margin-left: 0.5rem;
+  }
+
+  .edu-item {
+    position: relative;
+    padding-bottom: 2.5rem;
+  }
+
+  .edu-item:last-child { padding-bottom: 0; }
+
+  .edu-item::before {
+    content: '';
+    position: absolute;
+    left: -2.55rem;
+    top: 0.35rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--cream);
+    box-shadow: 0 0 0 2px var(--accent);
+  }
+
+  .edu-degree {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    color: var(--ink);
+    margin-bottom: 0.2rem;
+  }
+
+  .edu-school {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--accent2);
+    margin-bottom: 0.15rem;
+  }
+
+  .edu-year {
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── experience ── */
+  .exp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .exp-card {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 1.8rem;
+    transition: transform 0.22s, box-shadow 0.22s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .exp-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    height: 3px;
+    width: 0;
+    background: var(--accent);
+    transition: width 0.35s ease;
+  }
+
+  .exp-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.07); }
+  .exp-card:hover::after { width: 100%; }
+
+  .exp-year {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+
+  .exp-role {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .exp-org {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--accent2);
+    margin-bottom: 0.9rem;
+  }
+
+  .exp-desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* ── research ── */
+  .research-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .research-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0 2rem;
+    align-items: start;
+    padding: 2rem;
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    transition: box-shadow 0.22s;
+  }
+
+  .research-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.06); }
+
+  .research-index {
+    font-family: 'DM Serif Display', serif;
+    font-size: 3rem;
+    color: var(--rule);
+    line-height: 1;
+    user-select: none;
+  }
+
+  .research-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+    margin-bottom: 0.6rem;
+  }
+
+  .badge-first   { background: rgba(200,86,42,0.1);  color: var(--accent); }
+  .badge-upcoming{ background: rgba(42,90,140,0.1);  color: var(--accent2); }
+  .badge-capstone{ background: rgba(0,0,0,0.06);     color: var(--muted); }
+
+  .research-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+    line-height: 1.3;
+  }
+
+  .research-desc {
+    font-size: 0.87rem;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 0.8rem;
+  }
+
+  .research-links {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+  }
+
+  .link-chip {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--accent);
+    border-bottom: 1px solid rgba(200,86,42,0.3);
+    padding-bottom: 1px;
+    transition: border-color 0.2s;
+  }
+
+  .link-chip:hover { border-color: var(--accent); }
+
+  /* ── skills ── */
+  .skills-section-wrap {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 5rem 3rem;
+  }
+
+  .skills-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .skills-section-wrap .section-label { color: var(--accent); }
+  .skills-section-wrap .section-title { color: var(--cream); }
+  .skills-section-wrap hr.section-rule { border-color: rgba(255,255,255,0.1); }
+
+  .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+  }
+
+  .skill-tag {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 0.45rem 1.1rem;
+    border-radius: 2px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: rgba(247,244,239,0.85);
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .skill-tag:hover {
+    background: rgba(200,86,42,0.2);
+    border-color: rgba(200,86,42,0.4);
+    color: var(--cream);
+  }
+
+  /* ── achievements ── */
+  .achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+
+  .achievement-card {
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 1.4rem 1.6rem;
+    background: white;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.9rem;
+    transition: transform 0.2s;
+  }
+  .achievement-card:hover { transform: translateY(-2px); }
+
+  .ach-icon {
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .ach-text {
+    font-size: 0.87rem;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+
+  /* ── contact me ── */
+  .contact-strip {
+    background: var(--accent);
+    padding: 4rem 3rem;
+    text-align: center;
+    color: white;
+  }
+
+  .contact-strip h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.4rem;
+    margin-bottom: 0.6rem;
+    color: white;
+  }
+
+  .contact-strip p {
+    font-size: 1rem;
+    opacity: 0.85;
+    margin-bottom: 2rem;
+  }
+
+  .contact-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.8rem;
+    border-radius: 2px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .contact-btn-white {
+    background: white;
+    color: var(--accent);
+    border: 2px solid white;
+  }
+  .contact-btn-white:hover { background: transparent; color: white; }
+
+  .contact-btn-outline {
+    background: transparent;
+    color: white;
+    border: 2px solid rgba(255,255,255,0.5);
+  }
+  .contact-btn-outline:hover { background: white; color: var(--accent); border-color: white; }
+
+  /* ── footer ── */
+  footer {
+    background: var(--ink);
+    color: rgba(247,244,239,0.4);
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── animation ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ── responsiveness ── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero {
+      grid-template-columns: 1fr;
+      padding: 6rem 1.5rem 3rem;
+      gap: 2.5rem;
+      min-height: auto;
+    }
+    section { padding: 3.5rem 1.5rem; }
+    .skills-section-wrap { padding: 3.5rem 1.5rem; }
+    .contact-strip { padding: 3rem 1.5rem; }
+    .research-card { grid-template-columns: 1fr; gap: 0.5rem; }
+    .research-index { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- navigations -->
+<nav>
+  <span class="nav-logo">Umna Khawaja</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- hero/about me -->
+<div class="hero" id="about">
+  <div class="hero-text">
+    <p class="hero-eyebrow">M.S. in Artificial Intelligence · Oregon State University</p>
+    <h1 class="hero-name">Umna<br><em>Khawaja</em></h1>
+    <p class="hero-tagline">Software engineer and ML researcher building at the intersection of deep learning, generative models, <br> and causality.</p>
+    <div class="hero-ctas">
+      <a href="#research" class="btn btn-primary">View Research</a>
+      <a href="#contact" class="btn btn-secondary">Contact</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="stat-card">
+      <span class="stat-num">1st</span>
+      <span class="stat-label">Author on Deep Learning Paper<br><small style="color:var(--rule);font-size:0.75rem">Rectified Flow · U-Net Models · PyTorch</small></span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">2+</span>
+      <span class="stat-label">Years of Engineering &amp; Research Experience</span>
+    </div>
+    <div class="stat-card" style="flex-direction:column; align-items:flex-start; gap:0.6rem;">
+      <span class="stat-label" style="font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase;">Languages Spoken</span>
+      <div class="lang-pill-row">
+        <span class="lang-pill">English</span>
+        <span class="lang-pill">Spanish</span>
+        <span class="lang-pill">Urdu</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- education -->
+<section id="education">
+  <div class="section-header reveal">
+    <span class="section-label">Academic</span>
+    <h2 class="section-title">Education</h2>
+    <hr class="section-rule">
+  </div>
+  <div class="edu-timeline reveal">
+    <div class="edu-item">
+      <p class="edu-degree">M.S. in Artificial Intelligence</p>
+      <p class="edu-school">Oregon State University</p>
+      <p class="edu-year">Fall 2025 - Spring 2027</p>
+    </div>
+    <div class="edu-item">
+      <p class="edu-degree">B.S. Computer Science &amp; Minor in Economics</p>
+      <p class="edu-school">Oregon State University</p>
+      <p class="edu-year">Fall 2023 - Spring 2026</p>
+    </div>
+    <div class="edu-item">
+      <p class="edu-degree">High School Diploma, Summa Cum Laude</p>
+      <p class="edu-school">Mountainside High School</p>
+      <p class="edu-year">Fall 2019 – Spring 2023</p>
+    </div>
+  </div>
+</section>
+
+<!-- experience -->
+<section id="experience">
+  <div class="section-header reveal">
+    <span class="section-label">Work</span>
+    <h2 class="section-title">Experience</h2>
+    <hr class="section-rule">
+  </div>
+  <div class="exp-grid">
+    <div class="exp-card reveal">
+      <p class="exp-year">Fall 2025</p>
+      <p class="exp-role">Software Engineering Intern</p>
+      <p class="exp-org">Islamic Social Services of Oregon (ISOS)</p>
+      <p class="exp-desc">Contributed to web development projects and improved internal software tools to support community services.</p>
+    </div> 
+    <div class="exp-card reveal">
+      <p class="exp-year">Summer 2025</p>
+      <p class="exp-role">Software Engineering Intern</p>
+      <p class="exp-org">Bilal Masjid Sunday School</p>
+      <p class="exp-desc">Developed main webpage, maintained internal applications and databases to streamline administrative workflows.</p>
+    </div> 
+    <div class="exp-card reveal">
+      <p class="exp-year">Fall 2024 – Present</p>
+      <p class="exp-role">Supplemental Instruction Leader &amp; Mentor</p>
+      <p class="exp-org">Oregon State University</p>
+      <p class="exp-desc">Led weekly study sessions for Differential, Integral, and Vector Calculus. Mentored leaders, and measurably improved learning outcomes across cohorts.</p>
+    </div>
+  </div>
+</section>
+
+<!-- research -->
+<section id="research">
+  <div class="section-header reveal">
+    <span class="section-label">Scholarly</span>
+    <h2 class="section-title">Research</h2>
+    <hr class="section-rule">
+  </div>
+  <div class="research-list">
+    <div class="research-card reveal">
+      <span class="research-index">01</span>
+      <div>
+        <span class="research-badge badge-first">★ First Author</span>
+        <p class="research-title">U-Net Models with Noise-Adaptive Stepping Schedules for Rectified Flow</p>
+        <p class="research-desc">Implemented a U-Net architecture using Rectified Flow to study adaptive timestep scheduling and improve generative sampling efficiency. Manuscript in preparation.</p>
+        <div class="research-links">
+          <a href="Final_Project_Paper__AI_539.pdf" class="link-chip" target="_blank">📄 Paper</a>
+          <a href="https://github.com/umnakhawaja/AI-539-Final_Project.git" class="link-chip" target="_blank">⌥ Code</a>
+        </div>
+      </div>
+    </div>
+    <div class="research-card reveal">
+      <span class="research-index">02</span>
+      <div>
+        <span class="research-badge badge-capstone">Capstone</span>
+        <p class="research-title">Wildfire &amp; Landslide Analysis</p>
+        <p class="research-desc">Senior capstone project applying machine learning and data analysis techniques to natural disaster risk modelling.</p>
+        <div class="research-links">
+          <a href="https://github.com/Stryker212/Senior-Software-Engineering-Project.git" class="link-chip" target="_blank">⌥ Code</a>
+        </div>
+      </div>
+    </div>
+    <div class="research-card reveal">
+      <span class="research-index">03</span>
+      <div>
+        <span class="research-badge badge-upcoming">↑ Upcoming</span>
+        <p class="research-title">Causal Machine Learning</p>
+        <p class="research-desc">Selected to participate in a causal inference ML project (Spring 2026). Will implement models and analyze results in collaboration with faculty researchers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- skills -->
+<div class="skills-section-wrap" id="skills">
+  <div class="skills-inner">
+    <div class="section-header reveal">
+      <span class="section-label">Toolkit</span>
+      <h2 class="section-title">Technical Skills</h2>
+      <hr class="section-rule">
+    </div>
+    <div class="skills-grid reveal">
+      <span class="skill-tag">Python</span>
+      <span class="skill-tag">C++</span>
+      <span class="skill-tag">C</span>
+      <span class="skill-tag">Java</span>
+      <span class="skill-tag">JavaScript</span>
+      <span class="skill-tag">SQL</span>
+      <span class="skill-tag">R</span>
+      <span class="skill-tag">HTML &amp; CSS</span>
+      <span class="skill-tag">PyTorch</span>
+      <span class="skill-tag">Git</span>
+      <span class="skill-tag">Deep Learning</span>
+      <span class="skill-tag">Machine Learning</span>
+      <span class="skill-tag">Algorithms &amp; Data Structures</span>
+      <span class="skill-tag">Software Development</span>
+      <span class="skill-tag">Causal Inference</span>
+      <span class="skill-tag">Microsoft Office</span>
+    </div>
+  </div>
+</div>
+
+<!-- achievements -->
+<section id="achievements">
+  <div class="section-header reveal">
+    <span class="section-label">Honors</span>
+    <h2 class="section-title">Achievements</h2>
+    <hr class="section-rule">
+  </div>
+  <div class="achievements-grid">
+    <div class="achievement-card reveal">
+      <span class="ach-icon">🏆</span>
+      <p class="ach-text">Dean's Honor List</p>
+    </div>
+    <div class="achievement-card reveal">
+      <span class="ach-icon">📜</span>
+      <p class="ach-text">International Baccalaureate Diploma <br> &amp; $2,000 Annual Scholarship</p>
+    </div>
+    <div class="achievement-card reveal">
+      <span class="ach-icon">🌐</span>
+      <p class="ach-text">Oregon Seal of Biliteracy · <br> Spanish</p>
+    </div>
+    <div class="achievement-card reveal">
+      <span class="ach-icon">❤️</span>
+      <p class="ach-text">First Aid / CPR / AED · <br>
+        American Red Cross</p>
+    </div>
+    <div class="achievement-card reveal">
+      <span class="ach-icon">🗣️</span>
+      <p class="ach-text">Fluent in English, Spanish, &amp; Urdu</p>
+    </div>
+  </div>
+</section>
+
+<!-- contact me -->
+<div class="contact-strip" id="contact">
+  <h2>Let's Connect</h2>
+  <p>Open to research collaborations, internship opportunities, and interesting conversations.</p>
+  <div class="contact-links">
+    <a href="mailto:umna.khawaja@gmail.com" class="contact-btn contact-btn-white">✉ Email Me</a>
+    <a href="https://github.com/umnakhawaja/portfolio" target="_blank" class="contact-btn contact-btn-outline">⌥ GitHub</a>
+  </div>
+</div>
+
+<footer>© 2026 Umna Khawaja · All rights reserved </footer>
+
+<script>
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  revealEls.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
